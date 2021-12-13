@@ -9,15 +9,15 @@
              name : openjdk-8-jdk 
              state : present 
              update_cache : yes
-             #  - name: add tomcat group
-             #group:
-             #  name: tomcat
+  - name: add tomcat group
+    group:
+     name: tomcat
 
-             #  - name: add tomcat user
-             #user:
-             # name: tomcat
-             #group: tomcat
-             #  home: /user/share/tomcat
+  - name: add tomcat user
+    user:
+             name: tomcat
+             group: tomcat
+             #home: /user/share/tomcat
              #createhome: no
 
   - name: create /opt/tomcat directory
@@ -37,14 +37,14 @@
       dest: /opt/tomcat
       remote_src: yes
       extra_opts: [--strip-components=1]
-      #- name: Change ownership
-      #  file:
-      #path: /opt/tomcat
-      #owner: tomcat
-      #group: tomcat
-      #mode: "u+rwx,g+rx,o=rx"
-      #recurse: yes
-      #state: directory
+  - name: Change ownership
+    file:
+     path: /opt/tomcat
+     owner: tomcat
+     group: tomcat
+     mode: "u+rwx,g+rx,o=rx"
+     recurse: yes
+     state: directory
   - name: Deploying sample.war on tomcat Server
     ansible.builtin.copy :
              src : /home/cloud_user/tomcat/smart/app/sample.war
