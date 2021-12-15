@@ -11,7 +11,7 @@ EXPOSE 80
  # Clone ansible repo (could also add the ansible PPA and do an apt-get install instead)
 WORKDIR /data
 RUN chmod +x  tomcat_test.sh
-CMD ["/bin/bash","-c","./tomcat_test.sh PROD"]
+
 
  # Run ansible using the site.yml playbook 
  #RUN ansible-playbook /data/tomcat_deploy.yml -c local
