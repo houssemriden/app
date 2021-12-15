@@ -18,7 +18,7 @@ fi
 echo ""
 echo "Deploy Tomcat using Ansible"
 echo "---------------------------"
-ansible-playbook --extra-vars="env=${ENVIRONMENT}" /data/deploy.yml
+ansible-playbook --extra-vars="env=${ENVIRONMENT}" /data/tomcat_deploy.yml
 echo ""
 
 echo "Check java process and parameters"

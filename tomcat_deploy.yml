@@ -1,8 +1,10 @@
 ---
-- hosts : all
+- hosts : localhost
+  connection : local
   become : true 
   vars : 
    env : "{{env}}"
+   ansible_python_interpreter: /usr/bin/python3
   tasks : 
   - name : Installing Java 8 
     apt :
@@ -47,7 +49,7 @@
      state: directory
   - name: Deploying sample.war on tomcat Server
     ansible.builtin.copy :
-             src : /home/cloud_user/tomcat/smart/app/sample.war
+             src : /data/sample.war
              dest : /opt/tomcat/webapps
   - name: Copy Tomcat service from local to remote
     copy:
